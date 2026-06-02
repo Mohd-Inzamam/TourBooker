@@ -1,0 +1,57 @@
+/* General Error Banner (Above Form) */
+.ag-form-error-general {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background-color: rgba(239, 68, 68, 0.08); /* --ag-error with opacity */
+  border-left: 3px solid var(--ag-error, #ef4444);
+  padding: 0.75rem 1rem;
+  border-radius: var(--ag-radius-md, 8px);
+  margin-bottom: 1.25rem;
+  animation: agFadeInSlideDown 0.3s ease-out;
+}
+
+.ag-error-icon-general {
+  color: var(--ag-error, #ef4444);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ag-error-text-general {
+  color: var(--ag-error, #ef4444);
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Field-Level Error (Below Input) */
+.ag-field-error-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  animation: agFadeInSlideDown 0.2s ease-out;
+}
+
+.ag-error-icon-field {
+  color: var(--ag-error, #ef4444);
+  flex-shrink: 0;
+}
+
+.ag-field-error-text {
+  color: var(--ag-error, #ef4444);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+/* Base Animations */
+@keyframes agFadeInSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

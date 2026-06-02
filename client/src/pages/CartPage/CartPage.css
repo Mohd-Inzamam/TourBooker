@@ -1,0 +1,111 @@
+.ag-cart-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.ag-cart-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .ag-cart-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ag-cart-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  background: var(--ag-surface);
+  padding: 1rem;
+  border-radius: var(--ag-radius-lg);
+  margin-bottom: 1rem;
+  box-shadow: var(--ag-shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.ag-cart-item.stale {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.ag-stale-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--ag-error);
+  font-size: 0.75rem;
+  padding: 0.3rem 0.75rem;
+  font-weight: 500;
+  pointer-events: auto;
+}
+
+.ag-cart-stale-warning {
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid #fbbf24;
+  border-radius: var(--ag-radius-md);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  color: #92400e;
+}
+
+.ag-slots-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ag-slots-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--ag-radius-sm);
+  border: 1px solid var(--ag-border);
+  background: var(--ag-surface);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ag-text-main);
+}
+
+.ag-slots-btn:hover {
+  background: var(--ag-border);
+}
+
+.ag-order-summary {
+  background: var(--ag-surface);
+  padding: 1.5rem;
+  border-radius: var(--ag-radius-xl);
+  box-shadow: var(--ag-shadow-md);
+  position: sticky;
+  top: calc(var(--header-height, 70px) + 1rem);
+}
+
+.ag-summary-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--ag-text-muted);
+}
+
+.ag-summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ag-primary);
+  padding-top: 1rem;
+  border-top: 2px solid var(--ag-border);
+}

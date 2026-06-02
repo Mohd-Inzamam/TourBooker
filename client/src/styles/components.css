@@ -1,0 +1,523 @@
+/* =========================================================================
+   Antigravity Component Suite - Core CSS
+   modern, clean, high-contrast, pure CSS
+   ========================================================================= */
+
+/* --- Variables (inherits colors from layouts if available, sets fallbacks) --- */
+:root {
+  --ag-primary: #aa3bff;
+  --ag-primary-hover: #902be0;
+  --ag-primary-light: rgba(170, 59, 255, 0.1);
+  
+  --ag-surface: #ffffff;
+  --ag-surface-hover: #f8fafc;
+  --ag-bg: #f8fafc;
+  
+  --ag-text-main: #0f172a;
+  --ag-text-muted: #64748b;
+  --ag-text-light: #94a3b8;
+  
+  --ag-border: #e2e8f0;
+  --ag-border-focus: var(--ag-primary);
+  
+  --ag-error: #ef4444;
+  --ag-error-light: #fef2f2;
+  --ag-success: #22c55e;
+  
+  --ag-radius-sm: 6px;
+  --ag-radius-md: 8px;
+  --ag-radius-lg: 12px;
+  --ag-radius-xl: 16px;
+  --ag-radius-pill: 999px;
+  
+  --ag-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --ag-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --ag-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --ag-shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  --ag-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================================================
+   1. BUTTONS
+   ========================================================================= */
+.ag-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 20px;
+  border-radius: var(--ag-radius-md);
+  cursor: pointer;
+  transition: var(--ag-transition);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+  gap: 8px;
+}
+
+.ag-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ag-btn-primary {
+  background-color: var(--ag-primary);
+  color: white;
+  box-shadow: var(--ag-shadow-sm);
+}
+.ag-btn-primary:hover:not(:disabled) {
+  background-color: var(--ag-primary-hover);
+  box-shadow: var(--ag-shadow-md);
+  transform: translateY(-1px);
+}
+
+.ag-btn-secondary {
+  background-color: var(--ag-surface);
+  color: var(--ag-text-main);
+  border-color: var(--ag-border);
+  box-shadow: var(--ag-shadow-sm);
+}
+.ag-btn-secondary:hover:not(:disabled) {
+  background-color: var(--ag-surface-hover);
+  border-color: var(--ag-text-light);
+}
+
+.ag-btn-ghost {
+  background-color: transparent;
+  color: var(--ag-text-main);
+}
+.ag-btn-ghost:hover:not(:disabled) {
+  background-color: var(--ag-primary-light);
+  color: var(--ag-primary);
+}
+
+.ag-btn-loading .ag-btn-text {
+  opacity: 0; /* visually hide text but keep button width */
+}
+
+.ag-btn-spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+.ag-spinner {
+  animation: ag-spin 1s linear infinite;
+}
+
+@keyframes ag-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.ag-opacity-0 {
+  opacity: 0;
+}
+
+/* =========================================================================
+   2. FORM INPUTS
+   ========================================================================= */
+.ag-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.ag-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ag-text-main);
+}
+
+.ag-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ag-input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--ag-text-main);
+  background-color: var(--ag-surface);
+  border: 1px solid var(--ag-border);
+  border-radius: var(--ag-radius-md);
+  transition: var(--ag-transition);
+  outline: none;
+}
+.ag-input::placeholder {
+  color: var(--ag-text-light);
+}
+.ag-input:focus {
+  border-color: var(--ag-border-focus);
+  box-shadow: 0 0 0 3px var(--ag-primary-light);
+}
+
+.ag-input-pwd {
+  padding-right: 44px; /* Space for the eye icon */
+}
+
+.ag-input-error {
+  border-color: var(--ag-error);
+  background-color: var(--ag-error-light);
+}
+.ag-input-error:focus {
+  border-color: var(--ag-error);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.ag-pwd-toggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--ag-text-muted);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ag-radius-sm);
+  transition: var(--ag-transition);
+}
+.ag-pwd-toggle:hover {
+  color: var(--ag-text-main);
+  background-color: var(--ag-bg);
+}
+
+.ag-error-msg {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--ag-error);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* =========================================================================
+   3. TOUR CARD
+   ========================================================================= */
+.ag-tour-card {
+  background-color: var(--ag-surface);
+  border-radius: var(--ag-radius-xl);
+  overflow: hidden;
+  box-shadow: var(--ag-shadow-md);
+  transition: var(--ag-transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--ag-border);
+  position: relative;
+}
+
+.ag-tour-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ag-shadow-hover);
+}
+
+.ag-card-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.ag-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.ag-tour-card:hover .ag-card-image img {
+  transform: scale(1.05);
+}
+
+.ag-card-price {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
+  padding: 6px 12px;
+  border-radius: var(--ag-radius-pill);
+  font-weight: 800;
+  color: var(--ag-text-main);
+  box-shadow: var(--ag-shadow-sm);
+  font-size: 1rem;
+}
+
+.ag-card-rating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+  color: white;
+  padding: 4px 10px;
+  border-radius: var(--ag-radius-pill);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.ag-star-icon {
+  color: #fbbf24; /* Yellow star */
+}
+
+.ag-card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ag-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.ag-card-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ag-text-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.ag-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ag-text-main);
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+  /* Truncate to 2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ag-card-reviews {
+  font-size: 0.8rem;
+  color: var(--ag-text-light);
+  margin: 0 0 16px 0;
+}
+
+.ag-card-footer {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.ag-card-action {
+  width: 100%;
+}
+
+/* =========================================================================
+   4. FILTER CHIPS
+   ========================================================================= */
+.ag-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.ag-chip {
+  background-color: var(--ag-surface);
+  border: 1px solid var(--ag-border);
+  color: var(--ag-text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: var(--ag-radius-pill);
+  cursor: pointer;
+  transition: var(--ag-transition);
+  user-select: none;
+}
+
+.ag-chip:hover {
+  border-color: var(--ag-text-light);
+  color: var(--ag-text-main);
+  background-color: var(--ag-surface-hover);
+}
+
+.ag-chip-active {
+  background-color: var(--ag-text-main);
+  color: white;
+  border-color: var(--ag-text-main);
+}
+.ag-chip-active:hover {
+  background-color: var(--ag-text-main); /* Keep solid on hover when active */
+  color: white;
+  border-color: var(--ag-text-main);
+}
+
+
+/* =========================================================================
+   5. DATA TABLE
+   ========================================================================= */
+.ag-table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: var(--ag-surface);
+  border: 1px solid var(--ag-border);
+  border-radius: var(--ag-radius-lg);
+  box-shadow: var(--ag-shadow-sm);
+}
+
+.ag-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.ag-table th {
+  background-color: var(--ag-bg);
+  padding: 14px 20px;
+  font-weight: 600;
+  color: var(--ag-text-main);
+  border-bottom: 1px solid var(--ag-border);
+  white-space: nowrap;
+}
+
+.ag-sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: var(--ag-transition);
+}
+.ag-sortable:hover {
+  background-color: #f1f5f9;
+}
+
+.ag-th-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ag-th-right {
+  justify-content: flex-end;
+}
+
+.ag-sort-icon {
+  display: inline-flex;
+  color: var(--ag-text-light);
+}
+
+.ag-sort-placeholder {
+  width: 14px;
+}
+
+.ag-table td {
+  padding: 14px 20px;
+  color: var(--ag-text-muted);
+  border-bottom: 1px solid var(--ag-border);
+}
+
+.ag-table tbody tr {
+  transition: var(--ag-transition);
+}
+
+.ag-table tbody tr:hover {
+  background-color: var(--ag-surface-hover);
+}
+
+.ag-row-clickable {
+  cursor: pointer;
+}
+
+.ag-row-clickable:hover {
+  background-color: #f1f5f9 !important;
+}
+
+.ag-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.ag-text-right {
+  text-align: right;
+}
+
+.ag-table-empty {
+  text-align: center !important;
+  padding: 48px !important;
+}
+
+.ag-empty-state p {
+  color: var(--ag-text-light);
+  font-size: 0.95rem;
+}
+
+/* =========================================================================
+   6. SENTIMENT ANALYSIS COMPONENTS
+   ========================================================================= */
+.ag-sentiment-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: var(--ag-radius-pill);
+  font-weight: 500;
+}
+
+.ag-sentiment-bar-container {
+  height: 8px;
+  border-radius: var(--ag-radius-pill);
+  overflow: hidden;
+  display: flex;
+  margin: 0.5rem 0;
+  background: var(--ag-border);
+}
+
+.ag-sentiment-bar-positive {
+  background: var(--ag-success);
+}
+
+.ag-sentiment-bar-neutral {
+  background: #94a3b8;
+}
+
+.ag-sentiment-bar-negative {
+  background: var(--ag-error);
+}
+
+.ag-sentiment-summary {
+  padding: 1.25rem;
+  background: var(--ag-bg);
+  border-radius: var(--ag-radius-lg);
+  border: 1px solid var(--ag-border);
+  margin-bottom: 1.5rem;
+}
+
+.ag-sentiment-donut {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.ag-sentiment-donut::after {
+  content: '';
+  position: absolute;
+  inset: 30px;
+  border-radius: 50%;
+  background: var(--ag-surface);
+}

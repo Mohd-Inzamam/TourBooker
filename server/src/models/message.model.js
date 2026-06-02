@@ -1,0 +1,16 @@
+const mongoose = require('mongoose');
+
+const messageSchema = new mongoose.Schema({
+  conversationId: { type: mongoose.Schema.Types.ObjectId, ref: 'Conversation', required: true },
+  senderId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  content: { type: String, required: true, maxlength: 2000 },
+  messageType: { type: String, enum: ['text', 'inquiry', 'system'], default: 'text' },
+  isRead: { type: Boolean, default: false },
+  readAt: { type: Date }
+}, {
+  timestamps: true
+});
+
+messageSchema.index({ conversationId: 1, createdAt: -1 });
+
+module.exports = mongoose.model('Message', messageSchema);

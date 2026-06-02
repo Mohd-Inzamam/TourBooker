@@ -1,0 +1,77 @@
+/* AdminPromotionsPage.css */
+
+.ag-admin-promos-container {
+  padding: 0 0 2rem 0;
+}
+
+.ag-promo-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .ag-promo-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ag-promo-stat-card {
+  background: var(--ag-surface, #fff);
+  padding: 1rem 1.25rem;
+  border-radius: var(--ag-radius-lg, 12px);
+  box-shadow: var(--ag-shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
+  border: 1px solid var(--ag-border, #eaeaea);
+}
+
+.ag-usage-bar {
+  height: 4px;
+  background: var(--ag-border, #eaeaea);
+  border-radius: var(--ag-radius-pill, 20px);
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+.ag-usage-bar-fill {
+  height: 100%;
+  background: var(--ag-primary, #b8860b);
+  border-radius: var(--ag-radius-pill, 20px);
+  transition: width 0.3s ease;
+}
+
+.ag-code-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ag-code-copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ag-text-muted, #888);
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.ag-code-copy-btn:hover {
+  color: var(--ag-primary, #b8860b);
+  background: rgba(0,0,0,0.05);
+}
+
+.ag-promo-status-active {
+  color: var(--ag-success, #22c55e);
+}
+
+.ag-promo-status-expired {
+  color: var(--ag-text-muted, #888);
+}
+
+.ag-promo-status-inactive {
+  color: var(--ag-error, #ef4444);
+}

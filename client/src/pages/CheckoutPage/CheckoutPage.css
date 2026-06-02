@@ -1,0 +1,131 @@
+.ag-checkout-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+}
+
+.ag-checkout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .ag-checkout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ag-order-summary,
+.ag-payment-form {
+  background-color: var(--ag-surface, #ffffff);
+  padding: 1.5rem;
+  border-radius: var(--ag-radius-xl, 16px);
+  box-shadow: var(--ag-shadow-md);
+  border: 1px solid var(--ag-border);
+}
+
+.ag-order-summary h2,
+.ag-payment-form h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  color: var(--ag-text-main);
+}
+
+.ag-summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  color: var(--ag-text-muted);
+}
+
+.ag-summary-divider {
+  height: 1px;
+  background-color: var(--ag-border);
+  margin: 1.5rem 0;
+}
+
+.ag-order-total {
+  font-size: 1.5rem;
+  color: var(--ag-primary);
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ag-payment-error {
+  margin-top: 1rem;
+  color: var(--ag-error);
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ag-demo-payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ag-demo-banner {
+  background: rgba(170, 59, 255, 0.06);
+  border: 1px solid rgba(170, 59, 255, 0.25);
+  border-radius: var(--ag-radius-lg);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.ag-demo-banner-title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--ag-primary);
+  margin-bottom: 0.2rem;
+}
+
+.ag-demo-banner-sub {
+  font-size: 0.78rem;
+  color: var(--ag-text-muted);
+  line-height: 1.4;
+}
+
+.ag-demo-card-field {
+  position: relative;
+}
+
+.ag-demo-card-badge {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--ag-text-muted);
+  letter-spacing: 0.05em;
+}
+
+.ag-demo-card-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.ag-demo-security-badges {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.ag-demo-security-badge {
+  font-size: 0.72rem;
+  color: var(--ag-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}

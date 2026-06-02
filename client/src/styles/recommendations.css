@@ -1,0 +1,114 @@
+/* src/styles/recommendations.css */
+
+.ag-reco-section {
+  padding: 60px 5%;
+  background: var(--ag-ivory, #FDFAF5);
+  animation: agFadeIn 0.6s ease-out;
+}
+
+.ag-reco-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.ag-reco-title-wrap h2 {
+  font-family: var(--ag-font-display, 'Playfair Display', serif);
+  font-size: 2rem;
+  color: var(--ag-charcoal, #1C1C1E);
+  margin: 0 0 10px 0;
+}
+
+.ag-reco-gold-bar {
+  width: 60px;
+  height: 3px;
+  background-color: var(--ag-gold, #C9A84C);
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+.ag-reco-subtitle {
+  color: #888;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.ag-reco-arrows {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.ag-reco-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--ag-gold, #C9A84C);
+  background: #fff;
+  color: var(--ag-gold, #C9A84C);
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(201, 168, 76, 0.15);
+  transition: all 0.2s;
+}
+.ag-reco-arrow:hover {
+  background: var(--ag-gold, #C9A84C);
+  color: #fff;
+}
+.ag-reco-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Carousel track */
+.ag-reco-carousel {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 8px;
+}
+.ag-reco-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.ag-reco-card-wrap {
+  flex-shrink: 0;
+  width: 320px;
+  scroll-snap-align: start;
+}
+
+/* Skeleton */
+.ag-reco-skeleton {
+  width: 320px;
+  height: 340px;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #ece8e0 25%, #f5f1ea 50%, #ece8e0 75%);
+  background-size: 200% 100%;
+  animation: agShimmer 1.5s infinite;
+  flex-shrink: 0;
+}
+@keyframes agShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.ag-reco-empty, .ag-reco-error {
+  text-align: center;
+  padding: 40px;
+  color: #aaa;
+  font-size: 0.95rem;
+}
+
+@keyframes agFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
