@@ -512,6 +512,10 @@
   }
 }
 
+.ag-td-mobile-fixed {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .ag-td-hero-img-wrapper {
     height: 350px;
@@ -554,10 +558,6 @@
     margin: 0;
     width: auto;
     padding: 12px 32px;
-  }
-}
-  .ag-td-mobile-fixed {
-    display: none;
   }
 }
 
