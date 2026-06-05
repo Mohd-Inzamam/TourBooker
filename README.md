@@ -29,8 +29,8 @@ Architecture
 - CI/dev helpers: Postman collection included: [server/Tours & Activity Booking API.postman_collection.json](server/Tours & Activity Booking API.postman_collection.json)
 - Detailed architecture: [project_documentation.md](project_documentation.md)
 
-Screenshots
-  I'll soon add Screenshots
+Screenshots are present in assets folder.
+
 Installation
 1. Clone repo and install server & client:
    - Server:
