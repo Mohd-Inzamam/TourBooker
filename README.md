@@ -1,16 +1,20 @@
+# Live Demo
+
+https://tour-booker.vercel.app/
+
 # TourBooker — Tours & Activity Booking Platform
 
 Project Overview
 
 - Full-stack MERN marketplace for tours & activities with three roles: Traveller, Tour Operator, Admin.
 - Key flows: registration/login (JWT), operator onboarding, booking & payments (Stripe + demo mode), messaging, AI recommendations & chatbot, sentiment analytics, admin audit logs.
-- See full architecture & docs: [project_documentation.md](project_documentation.md) and client README: [client/README.md](client/README.md).
+- See full architecture & docs: project_documentation.md and client README: client/README.md.
 
 Features
 
 - Role-based portals (User / Operator / Admin)
 - Stripe payments with demo fallback (see [`DemoPaymentIntent`](server/src/models/demoPaymentIntent.model.js))
-- Client-side PDF receipts via jsPDF (see [client/src/services/receipt.service.js](client/src/services/receipt.service.js))
+- Client-side PDF receipts via jsPDF (see client/src/services/receipt.service.js)
 - AI recommendations & chatbot (client [`sendChatMessage`](client/src/services/ai.service.js), server [`callGroqAPI`](server/src/services/ai.service.js))
 - Messaging system with unread tracking and email notifications
 - Admin audit logs, analytics & sentiment dashboards
@@ -30,8 +34,8 @@ Architecture
 
 - Frontend: component + layout structure (see [client/src/layout/MainLayout.jsx](client/src/layout/MainLayout.jsx) and [client/src/layout/DashboardLayout.jsx](client/src/layout/DashboardLayout.jsx)), contexts for Auth/Cart/Notifications, centralized API client.
 - Backend: MVC-style controllers and routes under `server/src/` (controllers, routes, services, models, utils). Example controllers: payment & analytics.
-- CI/dev helpers: Postman collection included: [server/Tours & Activity Booking API.postman_collection.json](server/Tours & Activity Booking API.postman_collection.json)
-- Detailed architecture: [project_documentation.md](project_documentation.md)
+- CI/dev helpers: Postman collection included: server/Tours & Activity Booking API.postman_collection.json
+- Detailed architecture: project_documentation.md
 
 ## Screenshots
 
@@ -87,5 +91,3 @@ Future Enhancements
 - Multi-currency & tax rules extension for pricing engine
 - End-to-end tests & CI pipelines
 - Docker compose dev environment and deployment manifests
-
-If you want, I can create this README file in the repo now or add example
