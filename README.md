@@ -14,48 +14,17 @@
 
 # TourBooker — Tours & Activity Booking Platform
 
-Project Overview
+TourBooker is a full-stack MERN marketplace for discovering, booking, and managing tours and activities. It supports three distinct user roles — Traveller, Tour Operator, and Admin — each with dedicated portals, workflows, and dashboards. Built with production-grade features including Stripe payments, AI-powered recommendations, sentiment analytics, and a dynamic pricing engine.
 
-- Full-stack MERN marketplace for tours & activities with three roles: Traveller, Tour Operator, Admin.
-- Key flows: registration/login (JWT), operator onboarding, booking & payments (Stripe + demo mode), messaging, AI recommendations & chatbot, sentiment analytics, admin audit logs.
-- See full architecture & docs: project_documentation.md and client README: client/README.md.
+---
 
-# Live Demo
+## Live Demo
 
-https://tour-booker.vercel.app/
+🔴 [https://tour-booker.vercel.app/](https://tour-booker.vercel.app/)
 
-Features
-
-- Role-based portals (User / Operator / Admin)
-- Stripe payments with demo fallback (see [`DemoPaymentIntent`](server/src/models/demoPaymentIntent.model.js))
-- Client-side PDF receipts via jsPDF (see client/src/services/receipt.service.js)
-- AI recommendations & chatbot (client [`sendChatMessage`](client/src/services/ai.service.js), server [`callGroqAPI`](server/src/services/ai.service.js))
-- Messaging system with unread tracking and email notifications
-- Admin audit logs, analytics & sentiment dashboards
-
-Tech Stack
-
-- Frontend: React (Vite) — entry: [client/src/main.jsx](client/src/main.jsx)
-- Backend: Node.js + Express — entry: [server/server.js](server/server.js) and app config [server/app.js](server/app.js)
-- DB: MongoDB (Mongoose)
-- Payments: Stripe (with demo mode)
-- File uploads: Cloudinary + Multer
-- AI: Groq (LLaMA) + HuggingFace sentiment
-- PDF: jsPDF
-- HTTP client: Axios (central API client in client/api)
-
-Architecture
-
-- Frontend: component + layout structure (see [client/src/layout/MainLayout.jsx](client/src/layout/MainLayout.jsx) and [client/src/layout/DashboardLayout.jsx](client/src/layout/DashboardLayout.jsx)), contexts for Auth/Cart/Notifications, centralized API client.
-- Backend: MVC-style controllers and routes under `server/src/` (controllers, routes, services, models, utils). Example controllers: payment & analytics.
-- CI/dev helpers: Postman collection included: server/Tours & Activity Booking API.postman_collection.json
-- Detailed architecture: project_documentation.md
+---
 
 ## Screenshots
-
-Screenshots are included in the repository at: /client/src/assets/screenshots
-
-Example markdown to display one of these images:
 
 ![LandingPage](/client/src/assets/screenshots/LandingPage.png)
 ![AdminPanel](/client/src/assets/screenshots/AdminPanel.png)
@@ -63,45 +32,225 @@ Example markdown to display one of these images:
 ![OperatorDashboard](/client/src/assets/screenshots/OperatorDashboard.png)
 ![Message&Enquiry](/client/src/assets/screenshots/Message&Enquiry.png)
 
-Installation
+---
 
-1. Clone repo and install server & client:
-   - Server:
-     ```sh
-     cd server
-     npm install
-     npm run dev   # starts server (nodemon)
-     ```
-   - Client:
-     ```sh
-     cd client
-     npm install
-     npm run dev   # starts Vite dev server
-     ```
-2. Open two terminals (server + client) or use your preferred process manager.
+## Features
 
-Environment Variables
+### Authentication & Role-Based Access
 
-- Copy examples and set values:
-  - Server example: [.env.example](http://_vscodecontentref_/0) — includes MONGO_URI, JWT_SECRET, STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, DEMO_MODE
-  - Client example: [.env.example](http://_vscodecontentref_/1) — VITE_API_BASE_URL, VITE_STRIPE_PUBLISHABLE_KEY, VITE_DEMO_MODE
-- Important: DEMO*MODE=true will use demo payment intents (see [DemoPaymentIntent](http://\_vscodecontentref*/2)).
+- Register, login, and password reset for all user types
+- JWT-based authentication with role-based access control
+- Three roles: **Traveller** (customer), **Tour Operator**, and **Admin**
+- Protected routes enforced on both frontend and backend
 
-Quick Links (important files)
+### Tour Listings & Discovery
 
-- Frontend entry: [main.jsx](http://_vscodecontentref_/3)
-- Router: [routes.jsx](http://_vscodecontentref_/4)
-- Chatbot: [ChatbotWidget.jsx](http://_vscodecontentref_/5)
-- AI client service: [ai.service.js](http://_vscodecontentref_/6)
-- Receipt generator: [receipt.service.js](http://_vscodecontentref_/7)
-- Server entry: [server.js](http://_vscodecontentref_/8)
-- App & middleware: [app.js](http://_vscodecontentref_/9)
-- Demo payment model: [demoPaymentIntent.model.js](http://_vscodecontentref_/10)
+- Browse, filter, and search tours and activities with images and rich metadata
+- Large tour photo thumbnails with prominent booking CTAs
+- Detail pages with pricing, availability, reviews, and operator info
 
-Future Enhancements
+### Operator Portal
 
-- Real-time features via WebSockets (live booking updates, real-time chat)
-- Expand AI personalization & on-device caching
-- Multi-currency & tax rules extension for pricing engine
-- End-to-end tests & CI pipelines
-- Docker compose dev environment and deployment manifests
+- Operators can list and manage tours, set availability, and view incoming bookings
+- Full operator onboarding flow with profile and media management
+- Operator-specific dashboard with booking and revenue overview
+
+### Booking Flow & Cart
+
+- Add tours to cart and complete a multi-step checkout flow
+- Concurrency-safe slot booking to prevent overbooking
+- Booking history and status tracking for travellers
+
+### Payments
+
+- **Stripe** integration for live payments via PaymentIntents
+- **Demo payment mode** for local testing without real charges — toggle via `DEMO_MODE` env flag
+- Server-side webhook handling for booking fulfillment and payment confirmation
+- Client-side **PDF receipts** generated via jsPDF for every completed booking
+
+### Dynamic Pricing Engine
+
+- Configurable pricing rules supporting discounts, fees, and taxes
+- Pricing calculated server-side for consistency and security
+
+### Reviews & Ratings
+
+- Travellers can submit reviews and star ratings after booking
+- Review data feeds directly into the sentiment analytics dashboard
+
+### Messaging & Enquiries
+
+- Internal messaging system between travellers and operators
+- Unread message tracking with real-time badge indicators
+- Email notifications via **Nodemailer** for new messages, bookings, and OTPs
+
+### AI-Assisted Features
+
+- **Groq LLaMA 3.3 70B** powers personalized tour recommendations and a context-aware chatbot
+- **HuggingFace Transformers** performs sentiment analysis on reviews, surfaced in the admin analytics dashboard
+
+### Admin Dashboard
+
+- Audit logs for key platform events
+- Analytics overview: bookings, revenue, and user activity
+- Full management endpoints for users, tours, and operators
+
+### Media & File Handling
+
+- Image uploads via **Cloudinary** and **Multer**
+- Client-side PDF receipt generation via jsPDF
+
+---
+
+## Tech Stack
+
+### Frontend
+
+- React.js (Vite)
+- React Router DOM
+- Context API (Auth, Cart, Notifications)
+- Axios — centralized API client with auth interceptors
+- jsPDF — client-side PDF receipt generation
+
+### Backend
+
+- Node.js + Express.js
+- MongoDB + Mongoose
+- MVC architecture — controllers, routes, services, models, utils
+
+### Authentication & Security
+
+- JWT (access + refresh tokens)
+- Bcrypt password hashing
+- Role-based middleware
+
+### Payments
+
+- Stripe PaymentIntents + Webhooks
+- DemoPaymentIntent model for safe local testing
+
+### AI & Integrations
+
+- Groq API (LLaMA 3.3 70B) — chatbot & recommendations
+- HuggingFace Transformers — review sentiment analysis
+- Nodemailer — transactional email
+
+### File & Media
+
+- Cloudinary — cloud image storage
+- Multer — file upload middleware
+
+---
+
+## Architecture
+
+```text
+TourBooker
+│
+├── client
+│   ├── src
+│   │   ├── pages
+│   │   ├── components
+│   │   ├── layout
+│   │   │   ├── MainLayout.jsx
+│   │   │   └── DashboardLayout.jsx
+│   │   ├── context         # Auth, Cart, Notifications
+│   │   ├── services        # ai.service.js, receipt.service.js
+│   │   └── api             # Centralized Axios client
+│
+└── server
+    └── src
+        ├── controllers     # payment, analytics, bookings, etc.
+        ├── routes
+        ├── services        # ai.service.js, email, pricing
+        ├── models          # Mongoose schemas + DemoPaymentIntent
+        └── utils
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js v18+
+- MongoDB (local or Atlas)
+- Stripe account (or use demo mode)
+- Cloudinary account
+- Groq API key
+
+### Installation
+
+```bash
+git clone https://github.com/Mohd-Inzamam/TourBooker.git
+```
+
+**Server:**
+
+```bash
+cd server
+npm install
+npm run dev
+```
+
+**Client:**
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
+Open two terminals — one for the server, one for the client.
+
+---
+
+## Environment Variables
+
+**Server** — copy `.env.example` and fill in values:
+
+```env
+MONGO_URI=
+JWT_SECRET=
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+DEMO_MODE=true
+
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+
+SMTP_HOST=
+SMTP_PORT=
+SMTP_USER=
+SMTP_PASS=
+
+GROQ_API_KEY=
+HUGGINGFACE_API_KEY=
+```
+
+**Client** — copy `.env.example` and fill in values:
+
+```env
+VITE_API_BASE_URL=http://localhost:5000
+VITE_STRIPE_PUBLISHABLE_KEY=
+VITE_DEMO_MODE=true
+```
+
+> Set `DEMO_MODE=true` to use `DemoPaymentIntent` — no real Stripe charges.
+
+---
+
+## Future Enhancements
+
+- Real-time features via WebSockets (live booking updates, instant chat)
+- Multi-currency and international tax rules
+- Expanded AI personalization with on-device caching
+- End-to-end tests and CI/CD pipelines
+- Docker Compose dev environment and deployment manifests
+
+---
+
+## Author
+
+**Mohd Injmam** — Full Stack MERN Developer
